@@ -1,11 +1,11 @@
-Summary:	Maybe a Gnome shell like dashboard for Xfce 
+Summary:	Maybe a Gnome shell like dashboard for Xfce
 Name:		xfdashboard
-Version:	0.2.3
+Version:	0.7.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
-Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	693379b0ae08c8de2b287e49ca0bb605
+Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	4a349fbbb278ab26a2f71fd3f43b7d6f
 URL:		http://goodies.xfce.org/projects/applications/xfdashboard/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -29,8 +29,8 @@ xfdashboard provides a GNOME shell dashboard like interface for use
 with Xfce desktop. It can be configured to run to any keyboard
 shortcut and when executed provides an overview of applications
 currently open enabling the user to switch between different
-applications. The search feature works like Xfce's app finder
-which makes it convenient to search for and start applications.
+applications. The search feature works like Xfce's app finder which
+makes it convenient to search for and start applications.
 
 %prep
 %setup -q
@@ -51,7 +51,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#%find_lang %{name}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/{,xfdashboard/plugins}/*.la
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -62,13 +64,35 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %update_icon_cache hicolor
 
-#%files -f %{name}.lang
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 /etc/xdg/autostart/xfdashboard-autostart.desktop
 %attr(755,root,root) %{_bindir}/xfdashboard
+%attr(755,root,root) %{_bindir}/xfdashboard-settings
+%attr(755,root,root) %{_libdir}/libxfdashboard.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libxfdashboard.so.0
+%dir %{_libdir}/xfdashboard
+%dir %{_libdir}/xfdashboard/plugins
+%attr(755,root,root) %{_libdir}/xfdashboard/plugins/clock-view.so
+%attr(755,root,root) %{_libdir}/xfdashboard/plugins/gnome-shell-search-provider.so
+%attr(755,root,root) %{_libdir}/xfdashboard/plugins/hot-corner.so
+%attr(755,root,root) %{_libdir}/xfdashboard/plugins/middle-click-window-close.so
+%dir %{_datadir}/xfdashboard
+%{_datadir}/xfdashboard/bindings.xml
+%{_datadir}/xfdashboard/preferences.ui
 %{_desktopdir}/xfdashboard.desktop
+%{_desktopdir}/xfdashboard-settings.desktop
 %{_iconsdir}/hicolor/*/apps/xfdashboard*
 %{_datadir}/appdata/xfdashboard.appdata.xml
 %{_datadir}/themes/xfdashboard
+%{_datadir}/themes/xfdashboard-auber
+%{_datadir}/themes/xfdashboard-blue
+%{_datadir}/themes/xfdashboard-dark
+%{_datadir}/themes/xfdashboard-mint
+%{_datadir}/themes/xfdashboard-moranga
+%{_datadir}/themes/xfdashboard-wine
+
+#%attr(755,root,root) %{_libdir}/libxfdashboard.so
+#%{_includedir}/xfdashboard
+#%{_pkgconfigdir}/libxfdashboard.pc
