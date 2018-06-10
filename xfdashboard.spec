@@ -1,7 +1,7 @@
 Summary:	Maybe a Gnome shell like dashboard for Xfce
 Name:		xfdashboard
 Version:	0.7.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.7/%{name}-%{version}.tar.bz2
@@ -34,6 +34,9 @@ makes it convenient to search for and start applications.
 
 %prep
 %setup -q
+
+%{__mv} po/it{_IT,}.po
+sed -e 's/it_IT/it/' -i po/it.po configure.ac
 
 %build
 %{__libtoolize}
