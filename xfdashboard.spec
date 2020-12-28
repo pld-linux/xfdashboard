@@ -1,11 +1,11 @@
 Summary:	Maybe a Gnome shell like dashboard for Xfce
 Name:		xfdashboard
-Version:	0.7.5
-Release:	3
+Version:	0.8.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
-Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	e658770b2df0c9302bbc1248bf04c343
+Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	7beb2a2a4b799419f571e49d4f29458a
 URL:		http://goodies.xfce.org/projects/applications/xfdashboard/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -54,7 +54,13 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{ie,kk,ru_RU,sv_SE}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/{,xfdashboard/plugins}/*.la
+
+# remove devel files
+%{__rm} $RPM_BUILD_ROOT/%{_libdir}/libxfdashboard.so
+%{__rm} -r $RPM_BUILD_ROOT/%{_includedir}/xfdashboard
+%{__rm} $RPM_BUILD_ROOT/%{_pkgconfigdir}/libxfdashboard.pc
 
 %find_lang %{name}
 
@@ -69,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
-/etc/xdg/autostart/xfdashboard-autostart.desktop
+%doc AUTHORS ChangeLog NEWS
+%{_sysconfdir}/xdg/autostart/xfdashboard-autostart.desktop
 %attr(755,root,root) %{_bindir}/xfdashboard
 %attr(755,root,root) %{_bindir}/xfdashboard-settings
 %attr(755,root,root) %{_libdir}/libxfdashboard.so.*.*.*
@@ -78,6 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/xfdashboard
 %dir %{_libdir}/xfdashboard/plugins
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/clock-view.so
+%attr(755,root,root) %{_libdir}/xfdashboard/plugins/example-search-provider.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/gnome-shell-search-provider.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/hot-corner.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/middle-click-window-close.so
@@ -86,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/xfdashboard/preferences.ui
 %{_desktopdir}/xfdashboard.desktop
 %{_desktopdir}/xfdashboard-settings.desktop
-%{_iconsdir}/hicolor/*/apps/xfdashboard*
+%{_iconsdir}/hicolor/*/apps/org.xfce.xfdashboard.*
 %{_datadir}/appdata/xfdashboard.appdata.xml
 %{_datadir}/themes/xfdashboard
 %{_datadir}/themes/xfdashboard-auber
@@ -95,7 +102,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/themes/xfdashboard-mint
 %{_datadir}/themes/xfdashboard-moranga
 %{_datadir}/themes/xfdashboard-wine
-
-#%attr(755,root,root) %{_libdir}/libxfdashboard.so
-#%{_includedir}/xfdashboard
-#%{_pkgconfigdir}/libxfdashboard.pc
