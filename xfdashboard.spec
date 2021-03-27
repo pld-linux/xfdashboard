@@ -1,11 +1,11 @@
 Summary:	Maybe a Gnome shell like dashboard for Xfce
 Name:		xfdashboard
-Version:	0.8.0
+Version:	0.9.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
-Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	7beb2a2a4b799419f571e49d4f29458a
+Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	e3ae8573b07d8b8e5c1a29cd994e97ca
 URL:		http://goodies.xfce.org/projects/applications/xfdashboard/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -76,25 +76,24 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
-%{_sysconfdir}/xdg/autostart/xfdashboard-autostart.desktop
+%{_sysconfdir}/xdg/autostart/org.xfce.xfdashboard-autostart.desktop
 %attr(755,root,root) %{_bindir}/xfdashboard
 %attr(755,root,root) %{_bindir}/xfdashboard-settings
 %attr(755,root,root) %{_libdir}/libxfdashboard.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxfdashboard.so.0
+%attr(755,root,root) %{_libdir}/libxfdashboard.so.0
 %dir %{_libdir}/xfdashboard
 %dir %{_libdir}/xfdashboard/plugins
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/clock-view.so
-%attr(755,root,root) %{_libdir}/xfdashboard/plugins/example-search-provider.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/gnome-shell-search-provider.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/hot-corner.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/middle-click-window-close.so
 %dir %{_datadir}/xfdashboard
 %{_datadir}/xfdashboard/bindings.xml
 %{_datadir}/xfdashboard/preferences.ui
-%{_desktopdir}/xfdashboard.desktop
-%{_desktopdir}/xfdashboard-settings.desktop
+%{_desktopdir}/org.xfce.xfdashboard.desktop
+%{_desktopdir}/org.xfce.xfdashboard-settings.desktop
 %{_iconsdir}/hicolor/*/apps/org.xfce.xfdashboard.*
-%{_datadir}/appdata/xfdashboard.appdata.xml
+%{_datadir}/metainfo/org.xfce.xfdashboard.metainfo.xml
 %{_datadir}/themes/xfdashboard
 %{_datadir}/themes/xfdashboard-auber
 %{_datadir}/themes/xfdashboard-blue
