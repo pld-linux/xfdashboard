@@ -1,11 +1,11 @@
 Summary:	Maybe a Gnome shell like dashboard for Xfce
 Name:		xfdashboard
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	c075002be6697da56f2c2bd6a7b16737
+# Source0-md5:	7b02b2993e907169920a837272aa4b3a
 URL:		http://goodies.xfce.org/projects/applications/xfdashboard/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -87,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/gnome-shell-search-provider.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/hot-corner.so
 %attr(755,root,root) %{_libdir}/xfdashboard/plugins/middle-click-window-close.so
+%attr(755,root,root) %{_libdir}/xfdashboard/plugins/recently-used-search-provider.so
 %dir %{_datadir}/xfdashboard
 %{_datadir}/xfdashboard/bindings.xml
 %{_datadir}/xfdashboard/preferences.ui
