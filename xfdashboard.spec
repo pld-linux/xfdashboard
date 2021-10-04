@@ -1,11 +1,11 @@
 Summary:	Maybe a Gnome shell like dashboard for Xfce
 Name:		xfdashboard
-Version:	0.9.4
+Version:	0.9.5
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://archive.xfce.org/src/apps/xfdashboard/0.9/%{name}-%{version}.tar.bz2
-# Source0-md5:	bfce8daac3624553bce72faa10bffae3
+# Source0-md5:	c7bffdb5b08fcd6aa7016d5183af5c38
 URL:		http://goodies.xfce.org/projects/applications/xfdashboard/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
