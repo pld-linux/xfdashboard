@@ -17,6 +17,7 @@ BuildRequires:	glib2-devel >= 1:2.30.2
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
 BuildRequires:	libwnck-devel >= 2.30
+BuildRequires:	libxfce4ui-devel >= 4.12.0
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	xfce4-dev-tools >= 4.12.0
 BuildRequires:	xfconf-devel >= 4.12.0
